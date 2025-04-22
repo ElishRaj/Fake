@@ -20,6 +20,12 @@ let posts = [
   { id: 2, title: 'Second Post', content: 'This is the second post', author: 'Jane' }
 ];
 
+let songs = [
+  { id: 1, title: 'Shape of You', artist: 'Ed Sheeran' },
+  { id: 2, title: 'Blinding Lights', artist: 'The Weeknd' },
+  { id: 3, title: 'Levitating', artist: 'Dua Lipa' }
+];
+
 // Home route
 app.get('/', (req, res) => {
   res.send(`
@@ -32,6 +38,7 @@ app.get('/', (req, res) => {
       <li>GET /posts - Get all posts</li>
       <li>GET /posts/:id - Get a specific post by ID</li>
       <li>POST /posts - Create a new post</li>
+      <li>GET /songs - Get all songs</li> <!-- New route for songs -->
     </ul>
   `);
 });
@@ -93,6 +100,11 @@ app.post('/posts', (req, res) => {
 
   posts.push(newPost);
   res.status(201).json(newPost);
+});
+
+// GET all songs
+app.get('/songs', (req, res) => {
+  res.json(songs);
 });
 
 // Catch-all route for undefined routes (404 error)
